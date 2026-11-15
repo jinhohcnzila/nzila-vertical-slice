@@ -1,0 +1,244 @@
+NZILA_MASTER_DOCUMENT_V2
+Constituição Oficial de Desenvolvimento
+As Quatro Chamas de Nzila
+
+Versão: 2.0
+Status: Documento Mestre Oficial
+
+1. DECLARAÇÃO DE PROPÓSITO
+
+As Quatro Chamas de Nzila é um universo afro-fantástico original construído para contar histórias sobre:
+
+- Memória
+- Identidade
+- Pertencimento
+- Resistência
+- Legado
+
+O objetivo final não é apenas criar um jogo.
+
+O objetivo final é construir uma propriedade intelectual capaz de sustentar:
+
+- Jogos
+- Quadrinhos
+- Livros
+- Animações
+- Conteúdo digital
+- Comunidade própria
+
+2. VISÃO DO PROJETO
+
+Construir um universo afro-fantástico reconhecível, memorável e emocionalmente significativo.
+
+Quando alguém ouvir "Nzila", deve associar:
+
+- Memória
+- Chamas
+- Ancestralidade
+- Identidade
+- Resistência
+
+3. MISSÃO
+
+Construir uma experiência que faça o jogador sentir que suas ações possuem significado dentro do mundo.
+
+Em Nzila:
+
+"Lembrar é resistir.
+Esquecer é perder."
+
+4. O QUE NZILA É
+
+Gênero Principal:
+Beat'em Up Narrativo
+
+Gênero Secundário:
+Action RPG Leve
+
+Gênero Terciário:
+Aventura Narrativa
+
+Identidade Central:
+
+- Afro-fantasia
+- Combate
+- Exploração
+- Narrativa
+- Personagens
+
+5. O QUE NZILA NÃO É
+
+- MMORPG
+- MOBA
+- Battle Royale
+- Roguelike
+- Metroidvania
+- FPS
+- Gacha
+- Visual Novel
+- Soulslike
+- Survival
+
+6. FILOSOFIA DO MUNDO
+
+Tudo o que é lembrado continua existindo.
+
+As memórias não são apenas tema narrativo.
+
+As memórias são parte da realidade.
+
+7. PILARES CRIATIVOS
+
+Pilar 1 — Memória
+
+Toda narrativa deve conectar-se à preservação ou perda de memórias.
+
+Pilar 2 — Identidade
+
+Todos os personagens devem possuir identidade própria.
+
+Pilar 3 — Resistência
+
+O conflito central do universo é resistir ao apagamento.
+
+Pilar 4 — Legado
+
+Toda ação deixa marcas.
+
+Toda jornada produz consequências.
+
+8. HIERARQUIA DO CÂNONE
+
+Nível 1
+NZILA_MASTER_DOCUMENT
+
+Nível 2
+NZILA_CHARACTER_BIBLE
+
+Nível 3
+NZILA_ART_BIBLE
+
+Nível 4
+NZILA_TECH_BIBLE
+
+Nível 5
+Build Atual do Jogo
+
+Nível 6
+Conversas, prompts e rascunhos
+
+9. PROTAGONISTAS CENTRAIS
+
+- Akin
+- Amora
+- Liz
+- Flora
+
+10. ANTAGONISTAS CENTRAIS
+
+- Zamba
+- Dona Rasura
+- Arauto Branco
+
+11. ESCOPO DO VERTICAL SLICE
+
+Deve conter:
+
+- Akin
+- Movimento
+- Corrida
+- Ataque
+- Pulso Eco
+- HUD
+- Agente de Rasura
+- Vitória
+- Derrota
+- Vila Raiz
+
+Não deve conter:
+
+- Amora jogável
+- Liz jogável
+- Flora jogável
+- Bosses
+- Inventário
+- Craft
+- Save
+- Árvore de habilidades
+- Múltiplos cenários
+
+12. REGRAS DE EXPANSÃO
+
+Toda nova funcionalidade deve responder:
+
+1. Melhora o combate?
+2. Reforça a memória como tema?
+3. Fortalece os personagens?
+
+Se responder NÃO para duas dessas perguntas:
+
+A funcionalidade não entra.
+
+13. UTILIZAÇÃO DE IA
+
+Copilot:
+Arquitetura, documentação, QA e direção criativa.
+
+Claude:
+Implementação.
+
+DeepSeek:
+Revisão de código e otimização.
+
+ChatGPT:
+Validação paralela e balanceamento.
+
+14. REGRAS DE CÓDIGO
+
+- Nunca gerar patches.
+- Sempre gerar arquivos completos.
+- Nenhuma IA pode criar arquitetura própria.
+- Arquivos antigos não são fonte oficial.
+
+15. PIPELINE OFICIAL
+
+Fase 1
+Copilot
+
+Fase 2
+Claude
+
+Fase 3
+DeepSeek
+
+Fase 4
+ChatGPT
+
+Fase 5
+Copilot
+
+Fase 6
+GitHub Pages
+
+16. CRITÉRIOS DE APROVAÇÃO
+
+Uma build só é aprovada quando:
+
+- Não possui erros críticos
+- É executável
+- Pode ser testada integralmente
+- Possui objetivo claramente concluído
+
+17. CRITÉRIOS DE CONGELAMENTO
+
+Nenhuma funcionalidade nova entra em uma fase após o escopo ser definido.
+
+18. MANDAMENTO FINAL
+
+Sempre perguntar:
+
+"Isto fortalece a memória, a identidade, a resistência e o legado?"
+
+Se a resposta for não:
+
+não pertence a Nzila.

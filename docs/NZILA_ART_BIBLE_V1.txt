@@ -1,0 +1,536 @@
+NZILA_ART_BIBLE_V1
+Bíblia Oficial de Direção Artística
+As Quatro Chamas de Nzila
+
+Versão: 1.0
+Status: Oficial
+
+1. MISSÃO DA DIREÇÃO DE ARTE
+
+A direção de arte de Nzila existe para transmitir:
+
+- Memória
+- Ancestralidade
+- Identidade
+- Pertencimento
+- Resistência
+- Esperança
+
+Todo elemento visual deve reforçar pelo menos um desses conceitos.
+
+================================================
+
+2. IDENTIDADE VISUAL PRINCIPAL
+
+Nzila NÃO deve parecer:
+
+- Fantasia europeia tradicional
+- Cyberpunk
+- Steampunk
+- Fantasia medieval genérica
+- Fantasia tribal genérica
+
+Nzila DEVE parecer:
+
+- Afro-fantasia original
+- Mundo vivo
+- Civilizações ancestrais
+- Memórias transformadas em paisagem
+- Espiritualidade integrada ao cotidiano
+
+================================================
+
+3. REGRA FUNDAMENTAL DA ARTE
+
+Toda imagem de Nzila deve responder:
+
+"Isso poderia existir em qualquer outro universo?"
+
+Se a resposta for SIM:
+
+A arte precisa ser revisada.
+
+================================================
+
+4. PALETA OFICIAL
+
+OURO DA MEMÓRIA
+
+Cor:
+#DFAF3A
+
+Representa:
+
+- Memória
+- Legado
+- Esperança
+
+------------------------------------------------
+
+TERRACOTA DE VILA RAIZ
+
+Cor:
+#B15A3C
+
+Representa:
+
+- Comunidade
+- Terra
+- História
+
+------------------------------------------------
+
+ÍNDIGO PROFUNDO
+
+Cor:
+#2C1E4A
+
+Representa:
+
+- Mistério
+- Profundidade
+- Ancestralidade
+
+------------------------------------------------
+
+AZUL ECO
+
+Cor:
+#3FAEF7
+
+Representa:
+
+- Eco
+- Movimento
+- Energia Narrativa
+
+------------------------------------------------
+
+TURQUESA VIVO
+
+Cor:
+#2FC8C8
+
+Representa:
+
+- Renovação
+- Transformação
+- Futuro
+
+------------------------------------------------
+
+MARFIM RASURADO
+
+Cor:
+#E9E1D1
+
+Representa:
+
+- Esquecimento
+- Páginas
+- Registros
+
+================================================
+
+5. LINGUAGEM DAS QUATRO CHAMAS
+
+As chamas não são apenas fogo.
+
+São símbolos narrativos.
+
+------------------------------------------------
+
+CHAMA DE AKIN
+
+Cor:
+
+Dourado
+
+Representa:
+
+- Legado
+- Determinação
+
+------------------------------------------------
+
+CHAMA DE AMORA
+
+Cor:
+
+Laranja
+
+Representa:
+
+- Proteção
+- Comunidade
+
+------------------------------------------------
+
+CHAMA DE LIZ
+
+Cor:
+
+Azul
+
+Representa:
+
+- Conhecimento
+- Investigação
+
+------------------------------------------------
+
+CHAMA DE FLORA
+
+Cor:
+
+Turquesa
+
+Representa:
+
+- Renovação
+- Esperança
+
+================================================
+
+6. LINGUAGEM VISUAL DO ECO
+
+O Eco nunca deve parecer:
+
+- Mana
+- Laser
+- Magia tradicional
+- Energia tecnológica
+
+O Eco deve parecer:
+
+- Memórias em movimento
+- Ondulações
+- Vibrações
+- Inscrições ancestrais
+- Marcas espirituais
+
+Formas preferidas:
+
+- Anéis
+- Espirais
+- Ondas
+- Símbolos vivos
+
+================================================
+
+7. DESIGN DE VILA RAIZ
+
+Função:
+
+Coração emocional do universo.
+
+Materiais:
+
+- Madeira entalhada
+- Terra
+- Barro
+- Pedra trabalhada
+- Tecidos
+
+Nunca utilizar:
+
+- Concreto moderno
+- Arranha-céus
+- Arquitetura industrial
+
+Elemento obrigatório:
+
+Árvore Ancestral
+
+================================================
+
+8. DESIGN DOS PROTAGONISTAS
+
+Todos devem parecer:
+
+- Pessoas reais
+- Heróis acessíveis
+- Viajantes
+
+Mistura de:
+
+- Aventura
+- Cultura
+- Funcionalidade
+
+Evitar:
+
+- Armaduras gigantes
+- Espadas impossíveis
+- Roupas excessivamente ornamentadas
+
+================================================
+
+9. DESIGN DOS ANTAGONISTAS
+
+Representam:
+
+- Apagamento
+- Controle
+- Silenciamento
+
+------------------------------------------------
+
+ZAMBA
+
+Visual:
+
+- Elegante
+- Imponente
+- Controlado
+- Inteligente
+
+Nunca:
+
+- Monstruoso
+- Demoníaco genérico
+
+------------------------------------------------
+
+DONA RASURA
+
+Visual:
+
+- Páginas
+- Inscrições
+- Fragmentação
+
+------------------------------------------------
+
+ARAUTO BRANCO
+
+Visual:
+
+- Ordem
+- Disciplina
+- Silêncio
+
+================================================
+
+10. DESIGN DOS ALIADOS
+
+MESTRE ORIN
+
+Representa:
+
+- Sabedoria
+- Experiência
+
+------------------------------------------------
+
+MÃE ZURI
+
+Representa:
+
+- Tradição Viva
+
+------------------------------------------------
+
+VÓ MABEKI
+
+Representa:
+
+- Memória Preservada
+
+================================================
+
+11. ESTILO DOS CENÁRIOS
+
+Todos os cenários devem parecer:
+
+- Habitáveis
+- Antigos
+- Vivos
+- Memoráveis
+
+Elementos desejados:
+
+- Tecidos
+- Mercados
+- Luzes
+- Marcas de uso
+- Comunidade
+
+Evitar:
+
+- Cenários vazios
+- Corredores genéricos
+- Ambientes sem significado
+
+================================================
+
+12. ESTILO DE INTERFACE (UI)
+
+Deve parecer:
+
+- Artesanal
+- Elegante
+- Integrada ao mundo
+
+Nunca:
+
+- Militar
+- Tecnológica
+- Cyberpunk
+
+================================================
+
+13. ESTILO DE HUD
+
+HP:
+
+Vermelho quente
+
+ECO:
+
+Azul Eco
+
+Bordas:
+
+Dourado envelhecido
+
+Regra:
+
+Pouca informação.
+
+Máxima legibilidade.
+
+================================================
+
+14. ESTILO DOS EFEITOS VISUAIS
+
+ATAQUES
+
+Devem transmitir:
+
+- Ritmo
+- Peso
+- Impacto
+
+------------------------------------------------
+
+ECO
+
+Deve transmitir:
+
+- Fluidez
+- Espiritualidade
+- Memória em movimento
+
+Evitar:
+
+- Fogos de artifício
+- Explosões exageradas
+- Excesso de partículas
+
+================================================
+
+15. ARTES PROMOCIONAIS
+
+Hierarquia Oficial:
+
+Nível 1
+
+NZILA
+
+Nível 2
+
+Personagens
+
+Nível 3
+
+Mundo
+
+Nível 4
+
+Texto
+
+================================================
+
+16. REGRAS PARA PÔSTERES
+
+Toda peça deve responder:
+
+O que é?
+
+→ Nzila
+
+Quem?
+
+→ Personagens
+
+Por quê?
+
+→ Conflito
+
+Regra:
+
+Menos texto.
+Mais impacto.
+
+================================================
+
+17. REGRAS PARA TRAILERS
+
+Ordem Oficial:
+
+1. Nome
+2. Mundo
+3. Personagens
+4. Gameplay
+5. Conflito
+6. Encerramento
+
+================================================
+
+18. REGRAS PARA REDES SOCIAIS
+
+Sequência recomendada:
+
+Post 1
+
+Universo
+
+Post 2
+
+Gameplay
+
+Post 3
+
+Motivação emocional
+
+================================================
+
+19. O QUE EVITAR
+
+- Poluição visual
+- Saturação extrema
+- Interfaces futuristas
+- Personagens sem identidade
+- Personagens similares
+- Cenários vazios
+- Excesso de partículas
+- Fantasia medieval genérica
+
+================================================
+
+20. REGRA DE OURO
+
+Quando alguém olhar uma imagem de Nzila por dois segundos, deve reconhecer:
+
+- As Quatro Chamas
+- Vila Raiz
+- Eco
+- Memória
+- Afro-fantasia
+
+sem precisar de explicações.
+
+Se isso não acontecer:
+
+A arte ainda não está pronta.

@@ -1,0 +1,453 @@
+NZILA_CHARACTER_BIBLE_V1
+Bíblia Oficial dos Personagens
+As Quatro Chamas de Nzila
+
+Versão: 1.0
+Status: Oficial
+
+ESTRUTURA DE IMPORTÂNCIA
+
+PROTAGONISTAS CENTRAIS
+
+- Akin
+- Amora
+- Liz
+- Flora
+
+Representam as Quatro Chamas.
+
+São o núcleo permanente da franquia.
+
+ANTAGONISTAS CENTRAIS
+
+- Zamba
+- Dona Rasura
+- Arauto Branco
+
+Representam diferentes formas do apagamento.
+
+ALIADOS PRINCIPAIS
+
+- Mestre Orin
+- Mãe Zuri
+- Vó Mabeki
+
+Guias, guardiões e transmissores da memória.
+
+ENTIDADES
+
+- Griô Sem Voz
+- Guardião do Livro Oco
+
+Forças simbólicas do universo.
+
+================================================
+
+AKIN
+
+Papel na História:
+Protagonista principal.
+Primeira Chama de Nzila.
+
+Arquétipo:
+O Herdeiro Relutante
+
+Objetivo:
+Descobrir seu lugar no mundo e impedir que as memórias de seu povo desapareçam.
+
+Conflito Interno:
+Medo de não ser digno da herança que recebeu.
+
+Conflito Externo:
+As forças da Rasura tentam apagar o passado e remodelar o futuro.
+
+Relações:
+Amora - companheira de jornada.
+Liz - aliada estratégica.
+Flora - ponto de equilíbrio emocional.
+Zamba - principal oposição ideológica.
+
+Aparência Física:
+- Jovem adulto
+- Cabelos em pequenas mechas torcidas
+- Vestes terracota
+- Elementos dourados inspirados em tecidos ancestrais
+- Presença atlética
+
+Referências Visuais:
+- Herói viajante
+- Guardião da memória
+- Guerreiro ancestral
+
+Personalidade:
+- Curioso
+- Persistente
+- Empático
+- Impulsivo
+
+Voz Narrativa:
+Esperançosa.
+
+Frase:
+"Enquanto uma lembrança existir, ainda existe um caminho."
+
+Evolução:
+De sobrevivente para líder.
+
+Importância:
+CANÔNICA MÁXIMA
+
+================================================
+
+AMORA
+
+Papel:
+Segunda Chama.
+
+Arquétipo:
+A Protetora
+
+Objetivo:
+Proteger pessoas, tradições e vínculos.
+
+Conflito Interno:
+Carrega o peso de proteger todos.
+
+Conflito Externo:
+Enfrenta forças que transformam laços em divisões.
+
+Aparência:
+- Cabelos volumosos
+- Tons laranja e cobre
+- Vestimentas inspiradas em tecidos comunitários
+
+Personalidade:
+- Determinada
+- Corajosa
+- Afetuosa
+
+Voz Narrativa:
+Calorosa.
+
+Frase:
+"Um povo unido lembra junto."
+
+Evolução:
+Aprender que proteger não significa carregar tudo sozinha.
+
+Importância:
+CANÔNICA MÁXIMA
+
+================================================
+
+LIZ
+
+Papel:
+Terceira Chama.
+
+Arquétipo:
+A Observadora
+
+Objetivo:
+Compreender os mistérios do Eco e da memória.
+
+Conflito Interno:
+Busca respostas mesmo quando elas podem ser dolorosas.
+
+Conflito Externo:
+Luta contra aqueles que manipulam o conhecimento.
+
+Aparência:
+- Tranças longas
+- Elementos azul profundo
+- Visual ligado a registros e sabedoria
+
+Personalidade:
+- Analítica
+- Paciente
+- Inteligente
+
+Voz Narrativa:
+Reflexiva.
+
+Frase:
+"Toda história deixa vestígios."
+
+Evolução:
+Aprender que conhecimento sem ação é insuficiente.
+
+Importância:
+CANÔNICA MÁXIMA
+
+================================================
+
+FLORA
+
+Papel:
+Quarta Chama.
+
+Arquétipo:
+A Renovadora
+
+Objetivo:
+Reconstruir o que foi perdido.
+
+Conflito Interno:
+Conflito entre seguir em frente e preservar o passado.
+
+Conflito Externo:
+Luta contra a destruição das raízes do mundo.
+
+Aparência:
+- Tons turquesa
+- Elementos naturais
+- Visual conectado ao crescimento e renovação
+
+Personalidade:
+- Otimista
+- Criativa
+- Espiritual
+
+Voz Narrativa:
+Inspiradora.
+
+Frase:
+"Nenhuma raiz cresce sem enfrentar a escuridão."
+
+Evolução:
+Tornar-se símbolo de esperança coletiva.
+
+Importância:
+CANÔNICA MÁXIMA
+
+================================================
+
+ZAMBA
+
+Papel:
+Antagonista principal.
+
+Arquétipo:
+O Visionário Caído
+
+Objetivo:
+Reconstruir o mundo segundo sua própria visão.
+
+Conflito Interno:
+Acredita estar salvando o futuro.
+
+Conflito Externo:
+Confronta diretamente as Quatro Chamas.
+
+Relações:
+Akin - principal rival ideológico.
+Dona Rasura - aliada estratégica.
+Arauto Branco - executor de sua influência.
+
+Aparência:
+- Porte imponente
+- Longas mechas torcidas
+- Barba marcada
+- Tons carvão e vinho
+
+Personalidade:
+- Inteligente
+- Carismático
+- Calculista
+
+Voz Narrativa:
+Serena e ameaçadora.
+
+Frase:
+"Nem toda lembrança merece sobreviver."
+
+Evolução:
+Revelação gradual de suas motivações.
+
+Importância:
+CANÔNICA MÁXIMA
+
+================================================
+
+DONA RASURA
+
+Papel:
+Alta liderança do apagamento.
+
+Arquétipo:
+A Curadora do Esquecimento
+
+Objetivo:
+Transformar o esquecimento em ordem.
+
+Aparência:
+Vestes feitas de páginas e inscrições.
+
+Personalidade:
+Metódica.
+
+Frase:
+"A ordem exige silêncio."
+
+Importância:
+ALTA
+
+================================================
+
+ARAUTO BRANCO
+
+Papel:
+Executor das vontades da Rasura.
+
+Arquétipo:
+O Mensageiro Implacável
+
+Objetivo:
+Fazer cumprir o apagamento.
+
+Aparência:
+Figura encapuzada em branco.
+
+Personalidade:
+Disciplinada.
+
+Frase:
+"A memória pesa. O vazio liberta."
+
+Importância:
+ALTA
+
+================================================
+
+MESTRE ORIN
+
+Papel:
+Mentor.
+
+Arquétipo:
+O Velho Sábio
+
+Objetivo:
+Preparar a próxima geração.
+
+Aparência:
+Ancião de barba grisalha com cajado entalhado.
+
+Frase:
+"O caminho existe antes dos passos."
+
+Importância:
+ALTA
+
+================================================
+
+MÃE ZURI
+
+Papel:
+Guardiã da tradição.
+
+Arquétipo:
+A Matriarca
+
+Objetivo:
+Preservar histórias vivas.
+
+Frase:
+"Toda memória precisa de um guardião."
+
+Importância:
+ALTA
+
+================================================
+
+VÓ MABEKI
+
+Papel:
+Anciã contadora de histórias.
+
+Arquétipo:
+A Guardiã das Lembranças
+
+Objetivo:
+Garantir que nenhuma história desapareça.
+
+Aparência:
+Tranças grisalhas e lanterna ancestral.
+
+Frase:
+"Esquecer também é uma escolha."
+
+Importância:
+ALTA
+
+================================================
+
+GRIÔ SEM VOZ
+
+Papel:
+Entidade ligada às histórias perdidas.
+
+Arquétipo:
+O Narrador Silenciado
+
+Objetivo:
+Representar tudo aquilo que foi apagado.
+
+Aparência:
+Silhueta envolta por tecidos índigo e sombras.
+
+Frase:
+Não possui voz conhecida.
+
+Importância:
+MÉDIA-ALTA
+
+================================================
+
+GUARDIÃO DO LIVRO OCO
+
+Papel:
+Protetor de conhecimentos ausentes.
+
+Arquétipo:
+O Vigia do Vazio
+
+Objetivo:
+Impedir que memórias desapareçam para sempre.
+
+Aparência:
+Sentinela diante de um livro sem conteúdo visível.
+
+Frase:
+"O vazio também conta uma história."
+
+Importância:
+MÉDIA-ALTA
+
+================================================
+
+RESUMO OFICIAL DO ELENCO
+
+PROTAGONISTAS
+
+- Akin
+- Amora
+- Liz
+- Flora
+
+ANTAGONISTAS
+
+- Zamba
+- Dona Rasura
+- Arauto Branco
+
+ALIADOS
+
+- Mestre Orin
+- Mãe Zuri
+- Vó Mabeki
+
+ENTIDADES
+
+- Griô Sem Voz
+- Guardião do Livro Oco
