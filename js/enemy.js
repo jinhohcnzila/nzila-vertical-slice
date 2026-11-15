@@ -2,23 +2,22 @@
   'use strict';
 
   class Enemy {
-    console.log("ENEMY CREATED", x, y);
-constructor(x, y) {
+    constructor(x, y) {
       this.x = x;
       this.y = y;
 
       this.width = 32;
       this.height = 48;
 
-      this.maxHp = 75;
       this.hp = 75;
+      this.maxHp = 75;
 
-      this.speed = 120;
+      this.speed = 100;
 
       this.dead = false;
       this.remove = false;
 
-      this.deathTimer = 1.2;
+      this.deathTime = 1;
     }
 
     getBounds() {
@@ -41,20 +40,12 @@ constructor(x, y) {
       }
     }
 
-    intersects(rectA, rectB) {
-      return (
-        rectA.x < rectB.x + rectB.width &&
-        rectA.x + rectA.width > rectB.x &&
-        rectA.y < rectB.y + rectB.height &&
-        rectA.y + rectA.height > rectB.y
-      );
-    }
-
     update(dt, player) {
-      if (this.dead) {
-        this.deathTimer -= dt;
 
-        if (this.deathTimer <= 0) {
+      if (this.dead) {
+        this.deathTime -= dt;
+
+        if (this.deathTime <= 0) {
           this.remove = true;
         }
 
@@ -66,30 +57,32 @@ constructor(x, y) {
 
       const distance = Math.hypot(dx, dy);
 
-      if (distance < 300) {
+      if (distance > 5) {
         this.x += (dx / distance) * this.speed * dt;
         this.y += (dy / distance) * this.speed * dt;
       }
 
       if (player.isAttacking) {
+
         const hitbox = player.getAttackHitbox();
+        const enemyBox = this.getBounds();
 
         if (
-          this.intersects(
-            hitbox,
-            this.getBounds()
-          )
+          hitbox.x < enemyBox.x + enemyBox.width &&
+          hitbox.x + hitbox.width > enemyBox.x &&
+          hitbox.y < enemyBox.y + enemyBox.height &&
+          hitbox.y + hitbox.height > enemyBox.y
         ) {
-          this.takeDamage(15);
+          this.takeDamage(10);
         }
       }
     }
 
-    console.log("ENEMY DRAW");
-draw(ctx) {
+    draw(ctx) {
+
       const b = this.getBounds();
 
-      ctx.fillStyle = this.dead ? '#888' : '#ffffff';
+      ctx.fillStyle = this.dead ? '#777777' : '#FFFFFF';
 
       ctx.fillRect(
         b.x,
@@ -98,21 +91,20 @@ draw(ctx) {
         b.height
       );
 
-      // HP
       ctx.fillStyle = '#000';
 
       ctx.fillRect(
         b.x,
-        b.y - 10,
+        b.y - 8,
         b.width,
         4
       );
 
-      ctx.fillStyle = '#ff0000';
+      ctx.fillStyle = '#ff3333';
 
       ctx.fillRect(
         b.x,
-        b.y - 10,
+        b.y - 8,
         (this.hp / this.maxHp) * b.width,
         4
       );
@@ -120,4 +112,5 @@ draw(ctx) {
   }
 
   global.Enemy = Enemy;
+
 })(window);
