@@ -2,7 +2,8 @@
   'use strict';
 
   class Enemy {
-    constructor(x, y) {
+    console.log("ENEMY CREATED", x, y);
+constructor(x, y) {
       this.x = x;
       this.y = y;
 
@@ -84,7 +85,8 @@
       }
     }
 
-    draw(ctx) {
+    console.log("ENEMY DRAW");
+draw(ctx) {
       const b = this.getBounds();
 
       ctx.fillStyle = this.dead ? '#888' : '#ffffff';
