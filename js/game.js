@@ -1,5 +1,280 @@
 /**
  * game.js — As Quatro Chamas de Nzila
+ * Núcleo do jogo: canvas, loop principal, Player, vitória (30 s) e derrota (HP = 0).
+ *
+ * Ordem de scripts (index.html):
+ *   input.js -> touch.js -> player.js -> ui.js -> game.js
+ *
+ * Regras:
+ *   - VITÓRIA: sobreviver 30 segundos com HP > 0.
+ *   - DERROTA: HP do Player chegar a 0 (prioridade sobre a vitória).
+ *   - Reiniciar: toque no canvas, Enter, Espaço, R ou botão de ataque (J / gamepad).
+ *
+ * Integração futura (combat.js / enemy.js): adicione sistemas com
+ *   Game.addSystem({ update(dt, game){}, draw(ctx, game){} })
+ * e cause dano com Game.player.takeDamage(n).
+ *
+ * Teclas de teste: F3 = debug | F4 = causa 10 de dano ao Player.
+ */
+(function (global) {
+  'use strict';
+
+  const LOGICAL_WIDTH = 960;     // resolução lógica 16:9
+  const LOGICAL_HEIGHT = 540;
+  const STEP = 1 / 60;           // passo fixo da simulação (s)
+  const MAX_FRAME = 0.1;         // limite de dt por frame (s)
+  const HORIZON_Y = 210;         // início do chão
+  const SURVIVE_TIME = 30;       // segundos para vencer
+  const RESTART_DELAY = 0.8;     // s antes de aceitar reinício (evita toque acidental)
+
+  const STATE = Object.freeze({
+    PLAYING: 'playing',
+    PAUSED: 'paused',
+    VICTORY: 'victory',
+    DEFEAT: 'defeat'
+  });
+
+  const Game = {
+    STATE,
+    canvas: null,
+    ctx: null,
+    width: LOGICAL_WIDTH,
+    height: LOGICAL_HEIGHT,
+    state: STATE.PLAYING,
+    player: null,
+    systems: [],
+    surviveTime: SURVIVE_TIME,
+    timeLeft: SURVIVE_TIME,    // contagem regressiva (lida pelo ui.js)
+    elapsed: 0,                // tempo jogado na partida (s)
+    endTimer: 0,               // tempo desde o fim da partida (s)
+    debug: false,
+
+    /** Inicializa canvas, entrada, touch, UI e partida. */
+    init() {
+      if (this.canvas) return;
+
+      this.canvas = document.querySelector('#game') || document.querySelector('canvas');
+      if (!this.canvas) {
+        this.canvas = document.createElement('canvas');
+        document.body.appendChild(this.canvas);
+      }
+      this.canvas.width = this.width;
+      this.canvas.height = this.height;
+      this.canvas.style.touchAction = 'none';
+      this.ctx = this.canvas.getContext('2d');
+      this.fitCanvas();
+
+      global.addEventListener('resize', () => this.fitCanvas());
+      global.addEventListener('orientationchange', () => setTimeout(() => this.fitCanvas(), 200));
+
+      global.Input.init();
+      if (global.Touch) global.Touch.init();
+      if (global.UI) global.UI.init(this);
+
+      this.bindEvents();
+      this.newGame();
+      this.start();
+    },
+
+    /** Mantém 16:9 centralizado (letterbox) em qualquer tela. */
+    fitCanvas() {
+      const scale = Math.min(global.innerWidth / this.width, global.innerHeight / this.height);
+      this.canvas.style.width = Math.floor(this.width * scale) + 'px';
+      this.canvas.style.height = Math.floor(this.height * scale) + 'px';
+    },
+
+    bindEvents() {
+      global.addEventListener('keydown', (e) => {
+        if (e.repeat) return;
+        if (e.code === 'Escape' || e.code === 'KeyP') this.togglePause();
+        else if (e.code === 'F3') this.debug = !this.debug;
+        else if (e.code === 'F4' && this.state === STATE.PLAYING) this.player.takeDamage(10);
+        else if (this.isEnded() && (e.code === 'Enter' || e.code === 'Space' || e.code === 'KeyR')) this.tryRestart();
+      });
+
+      // Toque / clique no canvas: retoma a pausa ou reinicia após o fim
+      this.canvas.addEventListener('pointerdown', () => {
+        if (this.state === STATE.PAUSED) this.resume();
+        else if (this.isEnded()) this.tryRestart();
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) this.pause();
+      });
+    },
+
+    /** (Re)inicia a partida: novo Player no centro da tela e cronômetro zerado. */
+    newGame() {
+      this.player = new global.Player({
+        x: this.width / 2,
+        y: this.height / 2,
+        bounds: { width: this.width, height: this.height }
+      });
+      this.timeLeft = this.surviveTime;
+      this.elapsed = 0;
+      this.endTimer = 0;
+      this.state = STATE.PLAYING;
+      global.Input.reset();
+      if (global.UI) global.UI.reset();
+
+      this.systems.forEach((s) => {
+        if (typeof s.reset === 'function') s.reset(this);
+      });
+    },
+
+    isEnded() {
+      return this.state === STATE.VICTORY || this.state === STATE.DEFEAT;
+    },
+
+    tryRestart() {
+      if (this.isEnded() && this.endTimer >= RESTART_DELAY) this.newGame();
+    },
+
+    addSystem(system) {
+      if (this.systems.indexOf(system) === -1) this.systems.push(system);
+      return system;
+    },
+
+    pause() {
+      if (this.state !== STATE.PLAYING) return;
+      this.state = STATE.PAUSED;
+      global.Input.reset();
+    },
+
+    resume() {
+      if (this.state !== STATE.PAUSED) return;
+      this.state = STATE.PLAYING;
+      this._last = performance.now(); // evita salto de tempo
+    },
+
+    togglePause() {
+      if (this.state === STATE.PLAYING) this.pause();
+      else if (this.state === STATE.PAUSED) this.resume();
+    },
+
+    /** Loop principal: passo fixo + render a cada frame. */
+    start() {
+      let acc = 0;
+      this._last = performance.now();
+
+      const frame = (now) => {
+        const dt = Math.min((now - this._last) / 1000, MAX_FRAME);
+        this._last = now;
+
+        if (this.state === STATE.PLAYING) {
+          acc += dt;
+          while (acc >= STEP && this.state === STATE.PLAYING) {
+            this.update(STEP);
+            acc -= STEP;
+          }
+        } else {
+          acc = 0;
+          if (this.isEnded()) {
+            this.endTimer += dt;
+            // Reinício por botão de ataque (teclado J / gamepad / touch)
+            if (global.Input.wasPressed('attack')) this.tryRestart();
+          }
+        }
+
+        if (global.UI) global.UI.update(dt, this); // animações do HUD rodam em qualquer estado
+        this.draw();
+
+        global.Input.endFrame(); // limpa eventos "pressionado neste frame"
+        requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    },
+
+    /** Lógica por passo fixo (apenas em PLAYING). */
+    update(dt) {
+      this.elapsed += dt;
+      this.timeLeft = Math.max(0, this.surviveTime - this.elapsed);
+
+      this.player.update(dt);
+
+      for (let i = 0; i < this.systems.length; i++) {
+        const s = this.systems[i];
+        if (typeof s.update === 'function') s.update(dt, this);
+      }
+
+      // Derrota tem prioridade sobre vitória
+      if (this.player.hp <= 0) this.endGame(STATE.DEFEAT);
+      else if (this.timeLeft <= 0) this.endGame(STATE.VICTORY);
+    },
+
+    endGame(result) {
+      this.state = result;
+      this.endTimer = 0;
+      global.Input.reset();
+      if (global.UI) global.UI.showResult(result, this);
+    },
+
+    /** Renderização: cenário, Player, sistemas e interface. */
+    draw() {
+      const ctx = this.ctx;
+      this.drawBackground(ctx);
+
+      this.player.draw(ctx);
+      for (let i = 0; i < this.systems.length; i++) {
+        const s = this.systems[i];
+        if (typeof s.draw === 'function') s.draw(ctx, this);
+      }
+
+      if (global.UI) global.UI.draw(ctx, this);
+      if (this.debug) this.drawDebug(ctx);
+    },
+
+    /** Cenário provisório. */
+    drawBackground(ctx) {
+      const sky = ctx.createLinearGradient(0, 0, 0, HORIZON_Y);
+      sky.addColorStop(0, '#2b1b3d');
+      sky.addColorStop(1, '#e07a3f');
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, this.width, HORIZON_Y);
+
+      ctx.fillStyle = '#6f4527';
+      ctx.fillRect(0, HORIZON_Y, this.width, this.height - HORIZON_Y);
+
+      ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = 0; x <= this.width; x += 60) { ctx.moveTo(x, HORIZON_Y); ctx.lineTo(x, this.height); }
+      for (let y = HORIZON_Y; y <= this.height; y += 60) { ctx.moveTo(0, y); ctx.lineTo(this.width, y); }
+      ctx.stroke();
+    },
+
+    drawDebug(ctx) {
+      const p = this.player;
+      const b = p.getBounds();
+      ctx.save();
+      ctx.strokeStyle = '#0f0';
+      ctx.strokeRect(b.x, b.y, b.width, b.height);
+      ctx.fillStyle = '#0f0';
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText('x:' + p.x.toFixed(0) + ' y:' + p.y.toFixed(0) + ' run:' + p.isRunning +
+        ' estado:' + this.state + ' gamepad:' +
+        (global.Input.hasGamepad() ? global.Input.getGamepadName().slice(0, 28) : 'não'), 20, this.height - 14);
+      ctx.restore();
+    }
+  };
+
+  // Definir window.Game antes do DOMContentLoaded desativa o demo embutido do player.js
+  global.Game = Game;
+
+  function boot() {
+    if (!global.Input || !global.Player) {
+      console.error('[Game] Carregue input.js e player.js antes de game.js.');
+      return;
+    }
+    Game.init();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})(window);
+/**
+ * game.js — As Quatro Chamas de Nzila
  * Arquivo principal: canvas, loop de jogo, entidades, pausa e integração dos módulos.
  *
  * Ordem de scripts (index.html):

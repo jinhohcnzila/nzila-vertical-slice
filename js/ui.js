@@ -1,5 +1,233 @@
 /**
  * ui.js — As Quatro Chamas de Nzila
+ * Interface desenhada no canvas: HP, Eco, cronômetro, pausa e mensagens
+ * de vitória/derrota.
+ *
+ * Carregue ANTES de game.js. O Game chama:
+ *   UI.init(game)            -> uma vez, na inicialização
+ *   UI.update(dt, game)      -> a cada frame (qualquer estado)
+ *   UI.draw(ctx, game)       -> a cada frame, por cima da cena
+ *   UI.showResult(estado)    -> ao terminar a partida ('victory' | 'defeat')
+ *   UI.reset()               -> ao reiniciar a partida
+ *
+ * Extras: UI.showMessage(texto, segundos) para avisos temporários.
+ */
+(function (global) {
+  'use strict';
+
+  const COLORS = Object.freeze({
+    hp: '#d8453a',
+    hpTrail: '#ffb0a0',
+    eco: '#3aa8e8',
+    ecoFlash: '#bdeaff',
+    bg: '#1c1420',
+    border: '#000',
+    text: '#ffffff',
+    accent: '#ffd36b',
+    victory: '#7dffa0',
+    defeat: '#ff5a4a'
+  });
+
+  const FONT = 'sans-serif';
+  const TRAIL_DELAY = 0.35;   // s antes do rastro de dano começar a descer
+  const TRAIL_SPEED = 0.6;    // fração da barra por segundo
+
+  const state = {
+    game: null,
+    time: 0,
+    // HP
+    hpShown: 1, hpTrail: 1, trailWait: 0, lastHp: -1,
+    // Eco
+    ecoShown: 1, ecoFlash: 0, lastEco: -1,
+    // Mensagem temporária
+    message: '', messageT: 0, messageDur: 0,
+    // Tela de resultado
+    result: null, resultT: 0
+  };
+
+  const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+  function drawBar(ctx, x, y, w, h, fill, color) {
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(x, y, w, h);
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, w * clamp01(fill), h);
+    ctx.strokeStyle = COLORS.border;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x, y, w, h);
+  }
+
+  function drawText(ctx, str, x, y, size, color, align) {
+    ctx.font = 'bold ' + size + 'px ' + FONT;
+    ctx.textAlign = align || 'left';
+    ctx.textBaseline = 'alphabetic';
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(0,0,0,0.65)';
+    ctx.strokeText(str, x, y);
+    ctx.fillStyle = color || COLORS.text;
+    ctx.fillText(str, x, y);
+  }
+
+  function formatTime(seconds) {
+    const s = Math.max(0, Math.ceil(seconds));
+    return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  const UI = {
+    init(game) {
+      state.game = game;
+      this.reset();
+    },
+
+    /** Limpa estados temporários (nova partida). */
+    reset() {
+      state.hpShown = state.hpTrail = state.ecoShown = 1;
+      state.trailWait = 0;
+      state.lastHp = state.lastEco = -1;
+      state.ecoFlash = 0;
+      state.message = '';
+      state.messageT = 0;
+      state.result = null;
+      state.resultT = 0;
+    },
+
+    /** Atualiza HP e Eco suavizados e animações. */
+    update(dt, game) {
+      const g = game || state.game;
+      state.time += dt;
+      const p = g && g.player;
+
+      if (p) {
+        const hp = clamp01(p.hp / p.maxHp);
+        const eco = clamp01(p.eco / p.maxEco);
+
+        // HP: barra principal desce rápido; rastro de dano desce com atraso
+        if (state.lastHp >= 0 && p.hp < state.lastHp) state.trailWait = TRAIL_DELAY;
+        state.lastHp = p.hp;
+        state.hpShown += (hp - state.hpShown) * Math.min(1, dt * 14);
+        if (hp > state.hpTrail) state.hpTrail = hp;
+        else if (state.trailWait > 0) state.trailWait -= dt;
+        else state.hpTrail = Math.max(hp, state.hpTrail - TRAIL_SPEED * dt);
+
+        // Eco: brilha quando muda
+        if (state.lastEco >= 0 && Math.abs(p.eco - state.lastEco) > 0.01) state.ecoFlash = 0.25;
+        state.lastEco = p.eco;
+        state.ecoShown += (eco - state.ecoShown) * Math.min(1, dt * 12);
+        if (state.ecoFlash > 0) state.ecoFlash = Math.max(0, state.ecoFlash - dt);
+      }
+
+      if (state.messageT > 0) state.messageT = Math.max(0, state.messageT - dt);
+      if (state.result) state.resultT += dt;
+    },
+
+    /** Desenha HUD, mensagens e telas de fim de jogo. */
+    draw(ctx, game) {
+      const g = game || state.game;
+      if (!g) return;
+      ctx.save();
+
+      if (g.player) this.drawHud(ctx, g);
+      this.drawMessage(ctx, g);
+
+      if (g.state === g.STATE.PAUSED) this.drawPause(ctx, g);
+      if (state.result) this.drawResult(ctx, g);
+
+      ctx.restore();
+    },
+
+    /** HP, Eco e cronômetro. */
+    drawHud(ctx, g) {
+      const p = g.player;
+      const x = 20;
+      const w = 240;
+
+      drawText(ctx, 'AKIN', x, 22, 15, COLORS.accent);
+
+      // HP (rastro + pulso em vida baixa)
+      const low = p.hp > 0 && p.hp / p.maxHp <= 0.25;
+      const pulse = low ? 0.5 + 0.5 * Math.sin(state.time * 10) : 0;
+      ctx.fillStyle = COLORS.bg;
+      ctx.fillRect(x, 28, w, 18);
+      ctx.fillStyle = COLORS.hpTrail;
+      ctx.fillRect(x, 28, w * clamp01(state.hpTrail), 18);
+      ctx.fillStyle = low ? 'rgb(' + Math.round(216 + 39 * pulse) + ',69,58)' : COLORS.hp;
+      ctx.fillRect(x, 28, w * clamp01(state.hpShown), 18);
+      ctx.strokeStyle = COLORS.border;
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x, 28, w, 18);
+      drawText(ctx, 'HP ' + Math.ceil(p.hp) + ' / ' + p.maxHp, x + w / 2, 42, 12, COLORS.text, 'center');
+
+      // Eco
+      drawBar(ctx, x, 52, w, 14, state.ecoShown, state.ecoFlash > 0 ? COLORS.ecoFlash : COLORS.eco);
+      drawText(ctx, 'ECO ' + Math.floor(p.eco) + ' / ' + p.maxEco, x + w / 2, 64, 11, COLORS.text, 'center');
+
+      // Cronômetro (canto superior direito)
+      const urgent = g.state === g.STATE.PLAYING && g.timeLeft <= 5;
+      drawText(ctx, formatTime(g.timeLeft), g.width - 24, 40, 32,
+        urgent && Math.floor(state.time * 4) % 2 ? COLORS.defeat : COLORS.accent, 'right');
+      drawText(ctx, 'SOBREVIVA', g.width - 24, 58, 12, 'rgba(255,255,255,0.7)', 'right');
+    },
+
+    /** Aviso temporário no topo central. */
+    drawMessage(ctx, g) {
+      if (state.messageT <= 0) return;
+      const fadeIn = clamp01((state.messageDur - state.messageT) * 6);
+      const fadeOut = clamp01(state.messageT * 2);
+      ctx.globalAlpha = Math.min(fadeIn, fadeOut);
+      drawText(ctx, state.message, g.width / 2, g.height * 0.22, 24, COLORS.text, 'center');
+      ctx.globalAlpha = 1;
+    },
+
+    drawPause(ctx, g) {
+      ctx.fillStyle = 'rgba(10,6,16,0.75)';
+      ctx.fillRect(0, 0, g.width, g.height);
+      drawText(ctx, 'PAUSADO', g.width / 2, g.height / 2 - 10, 40, COLORS.accent, 'center');
+      drawText(ctx, 'Toque na tela ou pressione P / Esc para continuar', g.width / 2, g.height / 2 + 24, 16, COLORS.text, 'center');
+    },
+
+    /** Mensagens de vitória / derrota. */
+    drawResult(ctx, g) {
+      const win = state.result === g.STATE.VICTORY;
+      const t = clamp01(state.resultT * 2.5); // fade-in
+
+      ctx.globalAlpha = t * 0.8;
+      ctx.fillStyle = win ? 'rgba(10,30,16,1)' : 'rgba(30,8,8,1)';
+      ctx.fillRect(0, 0, g.width, g.height);
+
+      ctx.globalAlpha = t;
+      const cx = g.width / 2;
+      const cy = g.height / 2;
+      drawText(ctx, win ? 'VITÓRIA!' : 'DERROTA', cx, cy - 20, 56, win ? COLORS.victory : COLORS.defeat, 'center');
+      drawText(ctx,
+        win ? 'Akin sobreviveu 30 segundos. A chama de Nzila continua acesa.'
+            : 'As chamas de Akin se apagaram...',
+        cx, cy + 20, 18, COLORS.text, 'center');
+
+      if (g.endTimer >= 0.8) {
+        const blink = 0.55 + 0.45 * Math.sin(state.time * 5);
+        ctx.globalAlpha = blink;
+        drawText(ctx, 'Toque na tela ou pressione Enter para jogar novamente', cx, cy + 66, 16, COLORS.accent, 'center');
+      }
+      ctx.globalAlpha = 1;
+    },
+
+    /** Chamado pelo Game ao terminar a partida. */
+    showResult(result) {
+      state.result = result;
+      state.resultT = 0;
+    },
+
+    /** Aviso temporário. */
+    showMessage(str, seconds) {
+      state.message = String(str);
+      state.messageDur = state.messageT = seconds > 0 ? seconds : 2.5;
+    }
+  };
+
+  global.UI = UI;
+})(window);
+/**
+ * ui.js — As Quatro Chamas de Nzila
  * Interface em tela (HUD) desenhada no canvas: Vida, Eco, Groove, Combo,
  * barra de chefe, mensagens centrais e textos flutuantes.
  *
