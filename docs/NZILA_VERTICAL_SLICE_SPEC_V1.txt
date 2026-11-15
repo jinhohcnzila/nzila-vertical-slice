@@ -1,0 +1,425 @@
+NZILA_VERTICAL_SLICE_SPEC_V1
+Especificação Oficial da Build 0.2
+As Quatro Chamas de Nzila
+
+Versão: 1.0
+Status: Oficial
+
+1. OBJETIVO DO VERTICAL SLICE
+
+O Vertical Slice existe para responder apenas uma pergunta:
+
+"Nzila é divertido de jogar?"
+
+Não existe preocupação com:
+
+- Conteúdo final
+- Sistema de progressão
+- História completa
+- Quantidade de personagens
+
+O objetivo é validar:
+
+- Movimento
+- Combate
+- Eco
+- Feedback visual
+- Loop principal
+
+================================================
+
+2. RESULTADO ESPERADO
+
+Ao terminar esta Build o jogador deverá conseguir:
+
+Entrar em Vila Raiz
+↓
+Mover Akin
+↓
+Correr
+↓
+Atacar
+↓
+Usar Eco
+↓
+Derrotar inimigos
+↓
+Concluir a partida
+
+Sem bugs críticos.
+
+================================================
+
+3. DURAÇÃO DA EXPERIÊNCIA
+
+Sessão completa:
+
+2 a 5 minutos
+
+Primeira experiência:
+
+Menos de 30 segundos para aprender os controles.
+
+================================================
+
+4. GAMEPLAY PRINCIPAL
+
+Loop:
+
+Explorar
+↓
+Encontrar inimigos
+↓
+Combater
+↓
+Usar Eco
+↓
+Vencer
+↓
+Continuar explorando
+
+================================================
+
+5. PERSONAGEM JOGÁVEL
+
+AKIN
+
+Único personagem controlável.
+
+Capacidades:
+
+- Movimento
+- Corrida
+- Ataque
+- Eco
+
+================================================
+
+6. MOVIMENTO
+
+Objetivo:
+
+Transmitir:
+
+- Controle
+- Precisão
+- Agilidade
+
+Regras:
+
+Caminhada
+↓
+Velocidade padrão
+
+Corrida
+↓
+Reposicionamento rápido
+
+Resultado esperado:
+
+Akin responde imediatamente.
+
+================================================
+
+7. COMBATE
+
+Objetivo:
+
+Criar combates curtos e satisfatórios.
+
+Ataque Básico:
+
+Golpe único
+
+Características:
+
+- Rápido
+- Legível
+- Responsivo
+
+Feedback obrigatório:
+
+- Impacto visual
+- Som
+- Reação do inimigo
+
+================================================
+
+8. DANO
+
+AKIN
+
+Dano base:
+
+10
+
+------------------------------------------------
+
+AGENTE DE RASURA
+
+Vida:
+
+75 HP
+
+================================================
+
+9. SISTEMA ECO
+
+Objetivo Narrativo:
+
+Representar a força das memórias preservadas.
+
+Objetivo de Gameplay:
+
+Criar uma segunda camada de combate.
+
+Habilidade Inicial:
+
+Pulso Eco
+
+Efeito:
+
+- Empurra inimigos
+- Cria espaço
+- Controla o combate
+
+Consumo:
+
+Parte da barra Eco
+
+Recuperação:
+
+Permitida durante a partida.
+
+================================================
+
+10. AGENTE DE RASURA
+
+Primeiro inimigo oficial.
+
+Função:
+
+Ensinar o combate.
+
+Comportamento:
+
+Detecta Akin
+↓
+Persegue
+↓
+Pressiona
+↓
+Recebe dano
+↓
+Morre
+
+Não deve possuir:
+
+- Magias
+- Combos
+- Esquivas
+- Ataques especiais
+
+================================================
+
+11. VILA RAIZ
+
+Único mapa jogável.
+
+Objetivo:
+
+Apresentar o universo.
+
+Características:
+
+- Comunidade
+- Vida
+- História
+- Ancestralidade
+
+Elementos obrigatórios:
+
+- Árvore Ancestral
+- Casas de terra
+- Madeira entalhada
+- Tecidos
+- Elementos culturais
+
+================================================
+
+12. INTERFACE
+
+Exibir:
+
+- HP
+- ECO
+
+Opcional:
+
+- Tempo
+
+Não exibir:
+
+- Debug
+- FPS
+- Dados técnicos
+
+================================================
+
+13. VITÓRIA
+
+Condição:
+
+Derrotar todos os Agentes de Rasura da área.
+
+Resultado:
+
+Tela de Vitória.
+
+================================================
+
+14. DERROTA
+
+Condição:
+
+HP de Akin igual a zero.
+
+Resultado:
+
+Tela de Derrota.
+
+================================================
+
+15. FEEDBACK VISUAL
+
+ATAQUE
+
+- Arco de golpe
+- Impacto
+- Som
+
+------------------------------------------------
+
+ECO
+
+- Pulso visual
+- Azul Eco
+- Som próprio
+
+------------------------------------------------
+
+INIMIGO
+
+- Reage ao dano
+- Pisca ao ser atingido
+- Morre claramente
+
+================================================
+
+16. SONS NECESSÁRIOS
+
+Obrigatórios:
+
+- Ataque
+- Acerto
+- Eco
+- Dano recebido
+- Vitória
+- Derrota
+
+Não obrigatórios:
+
+- Música dinâmica
+- Narração
+
+================================================
+
+17. O QUE ESTÁ DENTRO DO ESCOPO
+
+✅ Akin
+
+✅ Movimento
+
+✅ Corrida
+
+✅ Ataque
+
+✅ Eco
+
+✅ HUD
+
+✅ Agente de Rasura
+
+✅ Vila Raiz
+
+✅ Vitória
+
+✅ Derrota
+
+✅ Sons básicos
+
+✅ Feedback visual
+
+================================================
+
+18. O QUE ESTÁ FORA DO ESCOPO
+
+❌ Amora jogável
+
+❌ Liz jogável
+
+❌ Flora jogável
+
+❌ Boss
+
+❌ Inventário
+
+❌ Craft
+
+❌ Loja
+
+❌ Missões
+
+❌ Sistema de nível
+
+❌ Árvore de habilidades
+
+❌ Múltiplos mapas
+
+================================================
+
+19. CRITÉRIOS DE APROVAÇÃO
+
+O Vertical Slice só será aprovado quando:
+
+✅ Movimento estiver responsivo
+
+✅ Corrida estiver divertida
+
+✅ Ataque estiver satisfatório
+
+✅ Eco estiver compreensível
+
+✅ Agente de Rasura funcionar
+
+✅ Combate funcionar
+
+✅ Vitória funcionar
+
+✅ Derrota funcionar
+
+✅ Build estiver publicada no GitHub Pages
+
+================================================
+
+20. DEFINIÇÃO DE SUCESSO
+
+Se um jogador que nunca ouviu falar de Nzila conseguir jogar três minutos e entender:
+
+- Quem é Akin
+- O que é Eco
+- Quem é o inimigo
+- Como lutar
+- Como vencer
+
+então o Vertical Slice cumpriu sua missão.

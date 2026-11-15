@@ -1,0 +1,310 @@
+NZILA_BUILD_0_2_IMPLEMENTATION_PLAN_V1
+Plano Oficial de Implementação da Build 0.2
+As Quatro Chamas de Nzila
+
+Versão: 1.0
+Status: Aprovado para Produção
+
+Dependências Obrigatórias:
+
+- NZILA_MASTER_DOCUMENT_V2
+- NZILA_CHARACTER_BIBLE_V1
+- NZILA_ART_BIBLE_V1
+- NZILA_TECH_BIBLE_V1
+- NZILA_VERTICAL_SLICE_SPEC_V1
+
+================================================
+
+1. OBJETIVO DA BUILD 0.2
+
+Construir a primeira versão verdadeiramente jogável de Nzila.
+
+Esta Build NÃO existe para impressionar visualmente.
+
+Ela existe para responder:
+
+"O combate é divertido?"
+
+================================================
+
+2. META DE ENTREGA
+
+Ao final da Build o jogador deverá conseguir:
+
+Entrar em Vila Raiz
+↓
+Controlar Akin
+↓
+Andar
+↓
+Correr
+↓
+Atacar
+↓
+Usar Eco
+↓
+Lutar contra Agentes da Rasura
+↓
+Vencer ou perder
+
+Sem erros críticos.
+
+================================================
+
+3. ESTRATÉGIA DE PRODUÇÃO
+
+Regra Principal:
+
+Não gerar o jogo inteiro.
+
+Gerar uma camada de cada vez.
+
+================================================
+
+FASE 1
+
+FUNDAÇÃO
+
+Arquivos:
+
+data/config.js
+
+core/state.js
+
+core/input.js
+
+Objetivo:
+
+- Configurações
+- Estados
+- Input
+
+Critério de aprovação:
+
+- Input detectado
+- Estados funcionando
+
+================================================
+
+FASE 2
+
+PERSONAGEM
+
+Arquivos:
+
+entities/player.js
+
+systems/movement.js
+
+Objetivo:
+
+- Movimento
+- Corrida
+
+Critério:
+
+Akin movimenta em 8 direções.
+
+================================================
+
+FASE 3
+
+INTERFACE
+
+Arquivos:
+
+ui/hud.js
+
+Objetivo:
+
+- HP
+- ECO
+
+Critério:
+
+HUD renderizada corretamente.
+
+================================================
+
+FASE 4
+
+COMBATE
+
+Arquivos:
+
+systems/combat.js
+
+systems/collision.js
+
+Objetivo:
+
+- Ataque
+- Dano
+- Hitbox
+
+Critério:
+
+Golpe funcionando.
+
+================================================
+
+FASE 5
+
+ECO
+
+Arquivos:
+
+systems/eco.js
+
+Objetivo:
+
+Pulso Eco.
+
+Critério:
+
+Eco afeta o combate.
+
+================================================
+
+FASE 6
+
+INIMIGOS
+
+Arquivos:
+
+entities/enemy.js
+
+Objetivo:
+
+Agente de Rasura.
+
+Critério:
+
+- Persegue
+- Recebe dano
+- Morre
+
+================================================
+
+FASE 7
+
+INTEGRAÇÃO
+
+Arquivos:
+
+core/game.js
+
+Objetivo:
+
+Unir todos os sistemas.
+
+Critério:
+
+Build completa funcionando.
+
+================================================
+
+4. CRITÉRIOS DE CONCLUSÃO
+
+A Build 0.2 será considerada pronta quando:
+
+✅ Movimento
+
+✅ Corrida
+
+✅ Ataque
+
+✅ Eco
+
+✅ Agente de Rasura
+
+✅ Dano
+
+✅ Vitória
+
+✅ Derrota
+
+✅ HUD
+
+estiverem funcionando juntos.
+
+================================================
+
+5. ENTREGÁVEIS
+
+Ao final da Build:
+
+- GitHub atualizado
+- GitHub Pages funcionando
+- Build jogável online
+- Documentação atualizada
+
+================================================
+
+6. REGRAS DE IMPLEMENTAÇÃO
+
+Claude deve:
+
+- Gerar arquivos completos
+- Nunca enviar patches
+- Seguir a arquitetura da Tech Bible
+- Respeitar o escopo do Vertical Slice
+
+================================================
+
+7. REGRAS DE REVISÃO
+
+DeepSeek deve:
+
+- Procurar bugs
+- Procurar conflitos de arquitetura
+- Procurar problemas de performance
+
+================================================
+
+8. REGRAS DE APROVAÇÃO
+
+Copilot deve validar:
+
+- Compatibilidade com os documentos oficiais
+- Compatibilidade com Android
+- Compatibilidade com GitHub Pages
+
+================================================
+
+9. OBJETIVO FINAL
+
+Validar o primeiro ciclo jogável de Nzila:
+
+Movimento
+↓
+Combate
+↓
+Eco
+↓
+Vitória / Derrota
+
+antes de adicionar:
+
+- Amora jogável
+- Liz jogável
+- Flora jogável
+- Novos mapas
+- Bosses
+- Inventário
+- Progressão
+
+================================================
+
+10. DEFINIÇÃO DE SUCESSO
+
+Se um jogador conseguir:
+
+- Entender os controles
+- Entender o Eco
+- Derrotar inimigos
+- Vencer ou perder uma partida
+
+sem instruções externas,
+
+então a Build 0.2 cumpriu sua missão.
