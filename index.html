@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>As Quatro Chamas de Nzila</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div id="game-container">
+
+    <div id="hud">
+        <div class="hud-item">
+            HP:
+            <span id="hp-value">100</span>
+        </div>
+
+        <div class="hud-item">
+            ECO:
+            <span id="eco-value">100</span>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+    <div id="message-overlay" class="hidden">
+        <h1 id="message-text"></h1>
+    </div>
+
+</div>
+
+<script src="js/input.js"></script>
+<script src="js/player.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+
+</body>
+</html>
+
