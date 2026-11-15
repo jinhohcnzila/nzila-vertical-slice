@@ -1,0 +1,637 @@
+NZILA_TECH_BIBLE_V1
+Bíblia Oficial de Arquitetura Técnica
+As Quatro Chamas de Nzila
+
+Versão: 1.0
+Status: Oficial
+
+================================================
+
+1. MISSÃO DA ARQUITETURA
+
+A arquitetura de Nzila deve priorizar:
+
+- Clareza
+- Escalabilidade
+- Legibilidade
+- Manutenção
+- Modularidade
+
+Antes de velocidade.
+
+O objetivo principal é permitir que:
+
+- Copilot
+- Claude
+- DeepSeek
+- ChatGPT
+- Futuros programadores
+
+trabalhem no mesmo projeto sem conflitos.
+
+================================================
+
+2. PRINCÍPIO TÉCNICO FUNDAMENTAL
+
+Cada arquivo possui apenas uma responsabilidade.
+
+CORRETO
+
+player.js
+↓
+Player
+
+INCORRETO
+
+player.js
+↓
+Player
+↓
+Combate
+↓
+HUD
+↓
+Input
+↓
+IA
+
+================================================
+
+3. ESTRUTURA OFICIAL DE PASTAS
+
+nzila/
+
+index.html
+
+css/
+
+style.css
+
+js/
+
+core/
+
+game.js
+state.js
+input.js
+loader.js
+
+entities/
+
+player.js
+enemy.js
+npc.js
+projectile.js
+
+systems/
+
+movement.js
+combat.js
+eco.js
+collision.js
+animation.js
+camera.js
+
+ui/
+
+hud.js
+menu.js
+notifications.js
+
+data/
+
+config.js
+characters.js
+enemies.js
+eco.js
+maps.js
+
+assets/
+
+sprites/
+tilesets/
+maps/
+audio/
+ui/
+
+docs/
+
+================================================
+
+4. FLUXO DO JOGO
+
+INICIALIZAÇÃO
+
+index.html
+↓
+loader.js
+↓
+config.js
+↓
+input.js
+↓
+game.js
+
+------------------------------------------------
+
+GAMEPLAY
+
+input
+↓
+movement
+↓
+collision
+↓
+combat
+↓
+eco
+↓
+ui
+↓
+render
+
+================================================
+
+5. ARQUITETURA HTML5
+
+Canvas único.
+
+Permitido durante:
+
+- Vertical Slice
+- Demo Pública
+
+Motivo:
+
+- Simplicidade
+- Compatibilidade Android
+- Compatibilidade GitHub Pages
+
+================================================
+
+6. ARQUITETURA JAVASCRIPT
+
+Padrão oficial:
+
+Arquitetura Modular
+
+Proibido:
+
+- Código global espalhado
+
+Permitido somente como integração:
+
+- window.Game
+- window.Player
+- window.Enemy
+
+================================================
+
+7. SISTEMA DE ESTADOS
+
+BOOT
+
+Carregamento.
+
+------------------------------------------------
+
+MENU
+
+Tela inicial.
+
+------------------------------------------------
+
+PLAYING
+
+Gameplay.
+
+------------------------------------------------
+
+PAUSED
+
+Jogo pausado.
+
+------------------------------------------------
+
+VICTORY
+
+Vitória.
+
+------------------------------------------------
+
+DEFEAT
+
+Derrota.
+
+================================================
+
+8. SISTEMA DE INPUT
+
+Responsável apenas por:
+
+- Teclado
+- Touch
+- Gamepad
+
+Nunca movimenta o jogador diretamente.
+
+================================================
+
+9. SISTEMA DE MOVIMENTO
+
+Arquivo:
+
+movement.js
+
+Responsável por:
+
+- Caminhada
+- Corrida
+- Direção
+- Velocidade
+
+================================================
+
+10. SISTEMA DE COMBATE
+
+Arquivo:
+
+combat.js
+
+Responsável por:
+
+- Ataques
+- Hitboxes
+- Dano
+- Morte
+
+------------------------------------------------
+
+BUILD 0.2
+
+Ataque básico:
+
+Golpe único
+
+Dano:
+
+10
+
+================================================
+
+11. SISTEMA ECO
+
+Arquivo:
+
+eco.js
+
+Definição:
+
+Eco é a manifestação das lembranças preservadas.
+
+------------------------------------------------
+
+BUILD 0.2
+
+Pulso Eco
+
+Consumo:
+
+20
+
+Efeito:
+
+- Empurrar inimigos
+- Criar espaço
+- Controlar combate
+
+================================================
+
+12. SISTEMA DE COLISÃO
+
+Arquivo:
+
+collision.js
+
+Responsável por:
+
+- Player
+- Enemy
+- Ataques
+- Objetos
+
+Nunca:
+
+- desenha
+- aplica dano
+- cria efeitos
+
+================================================
+
+13. SISTEMA DE IA
+
+BUILD 0.2
+
+Agente de Rasura
+
+Fluxo:
+
+Espera
+↓
+Detecta jogador
+↓
+Persegue
+↓
+Recebe dano
+↓
+Morre
+
+================================================
+
+14. SISTEMA DE HUD
+
+Exibir:
+
+- HP
+- ECO
+
+Opcional:
+
+- Tempo
+
+Nunca exibir:
+
+- Debug
+- FPS
+- Informações técnicas
+
+================================================
+
+15. CONVENÇÃO DE NOMENCLATURA
+
+Arquivos:
+
+Sempre:
+
+player.js
+
+enemy.js
+
+combat.js
+
+Nunca:
+
+player_final.js
+
+enemy_v2.js
+
+testeNovo.js
+
+================================================
+
+16. CONVENÇÃO DE CLASSES
+
+Player
+
+Enemy
+
+CombatSystem
+
+MovementSystem
+
+EcoSystem
+
+================================================
+
+17. CONVENÇÃO DE SPRITES
+
+assets/
+
+sprites/
+
+player/
+
+idle/
+walk/
+run/
+attack/
+
+enemy/
+
+idle/
+walk/
+attack/
+
+================================================
+
+18. CONVENÇÃO DE MAPAS
+
+Local:
+
+assets/maps/
+
+Formato:
+
+JSON
+
+Cada mapa deve possuir:
+
+- Nome
+- Descrição
+- Dimensões
+- Spawn
+
+================================================
+
+19. CONVENÇÃO DE ÁUDIO
+
+assets/audio/
+
+music/
+
+sfx/
+
+Nunca misturar músicas com efeitos.
+
+================================================
+
+20. SISTEMA DE SAVE (FUTURO)
+
+Não implementar agora.
+
+Estrutura planejada:
+
+save/
+
+player
+progress
+settings
+
+================================================
+
+21. SISTEMA DE QUESTS (FUTURO)
+
+Não implementar agora.
+
+Estrutura prevista:
+
+quest
+
+id
+title
+description
+state
+
+================================================
+
+22. ARQUITETURA DO VERTICAL SLICE
+
+Arquivos obrigatórios:
+
+core/
+
+game.js
+state.js
+input.js
+
+entities/
+
+player.js
+enemy.js
+
+systems/
+
+movement.js
+combat.js
+eco.js
+collision.js
+
+ui/
+
+hud.js
+
+data/
+
+config.js
+
+================================================
+
+23. ARQUITETURA DA DEMO
+
+Adicionar:
+
+npc.js
+
+menu.js
+
+maps.js
+
+Mais:
+
+- Narrativa curta
+- Múltiplas áreas
+
+================================================
+
+24. ARQUITETURA DO JOGO FINAL
+
+Adicionar:
+
+- quests
+- save
+- cutscenes
+- companions
+- expansão do Eco
+
+Sem modificar o núcleo do combate.
+
+================================================
+
+25. RESPONSABILIDADES DAS IAS
+
+COPILOT
+
+- Documentação
+- Arquitetura
+- QA
+- Revisão
+
+------------------------------------------------
+
+CLAUDE
+
+- Implementação
+- Arquivos completos
+
+------------------------------------------------
+
+DEEPSEEK
+
+- Otimização
+- Correções
+- Revisões
+
+------------------------------------------------
+
+CHATGPT
+
+- Balanceamento
+- Validação
+- Segunda opinião
+
+================================================
+
+26. PROTOCOLO ANTES DE GERAR CÓDIGO
+
+Toda IA deve receber:
+
+- NZILA_MASTER_DOCUMENT_V2
+- NZILA_CHARACTER_BIBLE_V1
+- NZILA_ART_BIBLE_V1
+- NZILA_TECH_BIBLE_V1
+
+Antes de produzir código relevante.
+
+================================================
+
+27. REGRAS ANTI-CAOS
+
+- Nunca gerar patches.
+- Sempre gerar arquivos completos.
+- Nunca misturar responsabilidades.
+- Nunca criar arquivos fora da arquitetura.
+- Nunca alterar a estrutura sem atualizar esta Tech Bible.
+
+================================================
+
+28. CRITÉRIO DE APROVAÇÃO DO VERTICAL SLICE
+
+✅ Movimento
+
+✅ Corrida
+
+✅ Ataque
+
+✅ Eco
+
+✅ Agente de Rasura
+
+✅ Dano
+
+✅ Vitória
+
+✅ Derrota
+
+Funcionando juntos.
+
+================================================
+
+29. MANDAMENTO TÉCNICO FINAL
+
+Sempre perguntar:
+
+"Isto simplifica a manutenção futura?"
+
+Se a resposta for NÃO:
+
+a funcionalidade deve ser reavaliada.
