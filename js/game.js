@@ -106,6 +106,19 @@
     /** (Re)inicia a partida: novo Player no centro da tela e cronômetro zerado. */
     newGame() {
       this.player = new global.Player({
+  x: this.width / 2,
+  y: this.height / 2,
+  bounds: {
+    width: this.width,
+    height: this.height
+  }
+});
+
+this.enemy = new global.Enemy(
+  this.width * 0.75,
+  this.height * 0.55
+);
+this.player = new global.Player({
         x: this.width / 2,
         y: this.height / 2,
         bounds: { width: this.width, height: this.height }
@@ -190,7 +203,17 @@
       this.elapsed += dt;
       this.timeLeft = Math.max(0, this.surviveTime - this.elapsed);
 
-      this.player.update(dt);
+     this.player.update(dt);
+if (this.enemy) {
+  this.enemy.update(
+    dt,
+    this.player
+  );
+
+  if (this.enemy.remove) {
+    this.enemy = null;
+  }
+}
 
       for (let i = 0; i < this.systems.length; i++) {
         const s = this.systems[i];
@@ -214,7 +237,10 @@
       const ctx = this.ctx;
       this.drawBackground(ctx);
 
-      this.player.draw(ctx);
+      if (this.enemy) {
+  this.enemy.draw(ctx);
+}
+this.player.draw(ctx);
       for (let i = 0; i < this.systems.length; i++) {
         const s = this.systems[i];
         if (typeof s.draw === 'function') s.draw(ctx, this);
