@@ -1,0 +1,384 @@
+NZILA_BUILD_0_2_CLAUDE_PACKAGE_V1
+Pacote Oficial de Programação para Claude
+As Quatro Chamas de Nzila
+
+Versão: 1.0
+Status: Aprovado para Produção
+Autoridade: NZILA_MASTER_DOCUMENT_V2
+
+================================================
+
+1. OBJETIVO DO PACOTE
+
+Este pacote existe para permitir que Claude implemente a Build 0.2 sem:
+
+- inventar arquitetura própria
+- alterar o escopo aprovado
+- adicionar funcionalidades não autorizadas
+- reutilizar código legado
+
+O objetivo é reconstruir a Build 0.2 de forma limpa, modular e escalável.
+
+================================================
+
+2. DOCUMENTOS OBRIGATÓRIOS
+
+Claude deve considerar os seguintes documentos como fonte oficial:
+
+- NZILA_MASTER_DOCUMENT_V2
+- NZILA_CHARACTER_BIBLE_V1
+- NZILA_ART_BIBLE_V1
+- NZILA_TECH_BIBLE_V1
+- NZILA_VERTICAL_SLICE_SPEC_V1
+- NZILA_BUILD_0_2_IMPLEMENTATION_PLAN_V1
+
+Caso exista conflito entre documentos:
+
+NZILA_MASTER_DOCUMENT_V2 possui prioridade máxima.
+
+================================================
+
+3. REGRAS OBRIGATÓRIAS
+
+REGRA 1
+
+Não reutilizar código antigo.
+
+------------------------------------------------
+
+REGRA 2
+
+Não criar arquitetura própria.
+
+------------------------------------------------
+
+REGRA 3
+
+Não criar funcionalidades fora do Vertical Slice.
+
+------------------------------------------------
+
+REGRA 4
+
+Sempre entregar arquivos completos.
+
+Nunca:
+
+- patches
+- trechos isolados
+- correções parciais
+
+------------------------------------------------
+
+REGRA 5
+
+Cada arquivo deve possuir apenas uma responsabilidade.
+
+================================================
+
+4. ESCOPO DA BUILD 0.2
+
+PERMITIDO
+
+✅ Movimento
+
+✅ Corrida
+
+✅ Ataque
+
+✅ Eco
+
+✅ HP
+
+✅ HUD
+
+✅ Agente de Rasura
+
+✅ Vitória
+
+✅ Derrota
+
+✅ Vila Raiz
+
+------------------------------------------------
+
+PROIBIDO
+
+❌ Inventário
+
+❌ Loja
+
+❌ Quest
+
+❌ Save
+
+❌ Boss
+
+❌ Múltiplos mapas
+
+❌ Árvore de habilidades
+
+❌ Amora jogável
+
+❌ Liz jogável
+
+❌ Flora jogável
+
+================================================
+
+5. ESTRUTURA OBRIGATÓRIA
+
+js/
+
+core/
+
+game.js
+state.js
+input.js
+loader.js
+
+entities/
+
+player.js
+enemy.js
+
+systems/
+
+movement.js
+combat.js
+eco.js
+collision.js
+
+ui/
+
+hud.js
+
+data/
+
+config.js
+
+Nenhum arquivo extra pode ser criado sem autorização.
+
+================================================
+
+6. ORDEM OBRIGATÓRIA DE IMPLEMENTAÇÃO
+
+ENTREGA 1
+
+Arquivos:
+
+- data/config.js
+- core/state.js
+- core/input.js
+
+Objetivo:
+
+Criar a fundação do jogo.
+
+------------------------------------------------
+
+ENTREGA 2
+
+Arquivos:
+
+- systems/movement.js
+- entities/player.js
+
+Objetivo:
+
+Movimento e corrida.
+
+------------------------------------------------
+
+ENTREGA 3
+
+Arquivos:
+
+- ui/hud.js
+
+Objetivo:
+
+HP e ECO.
+
+------------------------------------------------
+
+ENTREGA 4
+
+Arquivos:
+
+- systems/combat.js
+- systems/collision.js
+
+Objetivo:
+
+Sistema de combate.
+
+------------------------------------------------
+
+ENTREGA 5
+
+Arquivos:
+
+- systems/eco.js
+
+Objetivo:
+
+Implementar Pulso Eco.
+
+------------------------------------------------
+
+ENTREGA 6
+
+Arquivos:
+
+- entities/enemy.js
+
+Objetivo:
+
+Implementar Agente de Rasura.
+
+------------------------------------------------
+
+ENTREGA 7
+
+Arquivos:
+
+- core/game.js
+
+Objetivo:
+
+Integrar todos os sistemas.
+
+================================================
+
+7. CONFIGURAÇÕES OBRIGATÓRIAS
+
+PLAYER
+
+Nome:
+
+Akin
+
+HP:
+
+100
+
+Eco:
+
+100
+
+------------------------------------------------
+
+ATAQUE
+
+Dano:
+
+10
+
+------------------------------------------------
+
+PULSO ECO
+
+Consumo:
+
+20
+
+Função:
+
+Empurrar inimigos.
+
+------------------------------------------------
+
+INIMIGO
+
+Nome:
+
+Agente de Rasura
+
+HP:
+
+75
+
+================================================
+
+8. REQUISITOS DE COMPATIBILIDADE
+
+Compatível com:
+
+✅ Android
+
+✅ Chrome Mobile
+
+✅ GitHub Pages
+
+✅ Canvas HTML5
+
+✅ Termux Workflow
+
+================================================
+
+9. REQUISITOS DE CÓDIGO
+
+Todo código deve ser:
+
+- Modular
+- Comentado
+- Legível
+- Escalável
+
+Evitar:
+
+- Código duplicado
+- Dependências desnecessárias
+- Funções gigantes
+
+================================================
+
+10. CRITÉRIO DE APROVAÇÃO
+
+Uma entrega só será aceita se:
+
+- Compilar sem erros
+- Seguir a arquitetura oficial
+- Respeitar o escopo do Vertical Slice
+- Não introduzir funcionalidades extras
+
+================================================
+
+11. PRIMEIRA SOLICITAÇÃO AO CLAUDE
+
+Após receber os documentos oficiais, Claude deverá entregar SOMENTE:
+
+- data/config.js
+- core/state.js
+- core/input.js
+
+Importante:
+
+- Não gerar arquivos adicionais.
+- Não gerar patches.
+- Não gerar código de player ainda.
+- Não gerar combate ainda.
+- Não gerar inimigos ainda.
+
+================================================
+
+12. DECISÃO FINAL
+
+A documentação oficial está aprovada.
+
+A arquitetura está aprovada.
+
+O escopo está congelado.
+
+A reconstrução da Build 0.2 deve começar pela ENTREGA 1.
+
+Nenhuma funcionalidade adicional poderá ser implementada antes da conclusão da Build 0.2.
+
+================================================
+
+FIM DO DOCUMENTO
+
+NZILA_BUILD_0_2_CLAUDE_PACKAGE_V1
+
+Pacote Oficial para Reconstrução da Build 0.2
